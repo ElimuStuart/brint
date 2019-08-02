@@ -1,13 +1,7 @@
 from django.urls import path
-from .views import (
-    PostList,
-    PostCreate,
-    PostDetail,
-    PostUpdate,
-    PostDelete
-)
+from post.views import PostList, PostCreate, PostDelete, PostDetail, PostUpdate
 
-app_name = "post"
+app_name = 'post'
 
 urlpatterns = [
     path('posts/', PostList.as_view(), name='post_list'),

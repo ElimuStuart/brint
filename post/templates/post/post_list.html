@@ -1,0 +1,54 @@
+{% extends "post/base.html" %}
+
+{% block content %}
+
+
+<main role="main" class="container">
+  <div class="d-flex align-items-center p-3 my-3 text-dark-50 rounded shadow-sm">
+    <img class="mr-3" src="https://www.creativefan.com/files/2011/08/1.jpg" alt="" width="100" height="100">
+    <div class="lh-100">
+      <h5 class="mb-0 lh-100">brint</h5>
+      <small>A basic crud application created using django.</small>
+    </div>
+  </div>
+
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">
+        Posts
+        <a href="{% url 'post:post_create' %}" class="col-2 float-right">
+            <span class="rounded bg-success pl-2 pr-2 pt-1 pb-1 ml-2"><i class="text-white fas fa-plus"></i></span>
+        </a>
+    </h6>
+
+    {% for post in posts %}
+    <div class="text-muted pt-3 pb-2 row">
+      
+      <p class="media-body pb-3 mb-0 medium lh-125 col-lg-10 col-md-8 col-xs-12">
+        {{ post.title }}
+      </p>
+
+      <div class="media-icons col-lg-2 col-md-4 col-xs-12">
+        <a href="{% url 'post:post_detail' post.pk %}"><span class="rounded bg-primary pl-2 pr-2 pt-1 pb-1 mr-2"><i class="text-white fas fa-link"></i></span></a>
+        <a href="{% url 'post:post_update' post.pk %}"><span class="rounded bg-primary pl-2 pr-2 pt-1 pb-1 mr-2"><i class="text-white  fas fa-pencil-alt"></i></span></a>
+        <a href="{% url 'post:post_delete' post.pk %}"><span class="rounded bg-danger pl-2 pr-2 pt-1 pb-1 mr-2"><i class="text-white  far fa-trash-alt"></i></span></a>
+
+      </div>
+
+      
+    </div>
+    <h6 class="border-bottom border-gray pb-2 mb-0"></h6>
+
+    {% empty %}
+
+
+    
+    {% endfor %}
+   
+   
+  </div>
+
+
+</main>
+
+
+{% endblock content %}

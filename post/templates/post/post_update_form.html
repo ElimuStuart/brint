@@ -1,0 +1,47 @@
+{% extends "post/base.html" %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+
+
+<main role="main" class="container">
+
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="pb-2 mb-0">
+        Update Post
+        <a href="{% url 'post:post_list' %}" class="col-2 float-right">
+            <span class="rounded bg-danger pl-2 pr-2 pt-1 pb-1 ml-2"><i class="text-white fas fa-times"></i></span>
+        </a>
+    </h6>
+
+  </div>
+
+  <div class="text-muted pt-3 bg-white rounded shadow-sm row">
+    <div class="col-lg-12 col-xs-11 offset-xs-1">
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+
+            {% for hidden_field in form.hidden_fields %}
+                {{ hidden_field }}
+            {% endfor %}
+            {% for field in form.visible_fields %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {% render_field field class="form-control" %}
+                {% if field.help_text %}
+                    <small id="emailHelp" class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">submit</button>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+{% endblock %}

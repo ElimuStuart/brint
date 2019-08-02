@@ -8,7 +8,7 @@ from .models import Post
 from .forms import PostForm
 
 class PostList(ListView):
-    model = Post
+    queryset = Post.objects.all()
     context_object_name = 'posts'
 
 
@@ -18,9 +18,9 @@ class PostDetail(DetailView):
 
 
 class PostCreate(FormView):
-    template_name = 'post_create.html'
+    template_name = 'post/post_create.html'
     form_class = PostForm
-    success_url = reverse('post:post_list')
+    success_url = reverse_lazy('post:post_list')
 
     def form_valid(self, form):
         form.save()
@@ -31,6 +31,7 @@ class PostUpdate(UpdateView):
     model = Post
     fields = '__all__'
     template_name_suffix = '_update_form'
+    success_url = reverse_lazy('post:post_list')
 
 
 class PostDelete(DeleteView):
