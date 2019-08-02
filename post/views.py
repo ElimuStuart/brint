@@ -20,7 +20,7 @@ class PostDetail(DetailView):
 class PostCreate(FormView):
     template_name = 'post_create.html'
     form_class = PostForm
-    success_url = reverse('index')
+    success_url = reverse('post:post_list')
 
     def form_valid(self, form):
         form.save()
@@ -35,7 +35,7 @@ class PostUpdate(UpdateView):
 
 class PostDelete(DeleteView):
     model = Post
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('post:post_list')
 
 
 
