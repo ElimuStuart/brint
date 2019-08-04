@@ -4,6 +4,9 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormView, UpdateView, DeleteView
 from django.views import View
 
+from rest_framework import viewsets
+from .serializers import PostSerializer
+
 from .models import Post
 from .forms import PostForm
 
@@ -37,6 +40,11 @@ class PostUpdate(UpdateView):
 class PostDelete(DeleteView):
     model = Post
     success_url = reverse_lazy('post:post_list')
+
+
+class PostView(viewsets.ModelViewSet):
+    serializer_class = PostSerializer
+    queryset = Post.objects.all()
 
 
 
