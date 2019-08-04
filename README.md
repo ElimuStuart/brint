@@ -1,3 +1,5 @@
+<img src="icon.png" alt="brint" style="width:100%; height:auto;">
+
 # brint
 A simple crub application 
 I'm following this article <a target="_blank">https://medium.com/@john.bagiliko/build-a-django-crud-web-application-part-ii-4dbce965ce1d</a>
